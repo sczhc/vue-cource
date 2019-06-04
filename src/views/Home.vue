@@ -1,18 +1,39 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<div>
+    <h1>home</h1>
+    <!-- <w-click />
+    <w-show /> -->
+    <p v-for="item in numbers" :key="item">{{item}}</p>
+    <button @click="getInfo">请求数据</button>
+</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+// import WClick from '@/components/WClick';
+// import WShow from '@/components/WShow';
+import axios from 'axios'
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+    components: {
+        // WClick,
+        // WShow
+    },
+    data() {
+        return {
+            add: [4, 5],
+            // numbers:[1,2,3,...this.add]
+        }
+    },
+    computed: {
+        numbers() {
+            return [1, 2, 3, ...this.add]
+        }
+    },
+    methods: {
+        getInfo() {
+            axios.post('http://localhost:3000/getUserInfo').then(resp => {
+                console.log(resp)
+            })
+        }
+    }
 }
 </script>

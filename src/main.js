@@ -2,8 +2,18 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import BootstrapVue from 'bootstrap-vue'
+import Bus from './bus'
+import Mock from './mock'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './less/common.less'
 
 Vue.config.productionTip = false
+Vue.prototype.$bus = Bus
+
+Vue.use(BootstrapVue)
 
 new Vue({
   router,
